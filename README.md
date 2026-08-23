@@ -12,23 +12,23 @@ A lightweight terminal clone inspired by Windows and Linux shell behaviors, buil
 
 ### How to Test
 
-* first clone the project
+1. **first clone the project**
 ```bash
 git clone https://github.com/gmhazza/terminal.git
 cd ./terminal
 ```
 
-* Build the project
-1. on windows (install mingw32)
+2. **Build the project**
+* on windows (mingw)
 ```bash
 mingw32-make
 ```
-2. on linux
+* on linux
 ```sh
 make
 ```
 
-* execute the project
+3. **execute the project**
 ```bash
 ./bin/main
 ```
