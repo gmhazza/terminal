@@ -7,10 +7,14 @@ int main() {
 	std::cerr << std::unitbuf;
 	std::vector<std::string> all_commands = {"echo", "exit", "type"};
 	while (true) {
+		std::string cwd = "";
 		std::string command;
-		std::cout << "$ ";
+		std::cout << cwd << " $ ";
 		std::getline(std::cin, command);
-		if (shell::check_command(command.substr(0, command.find(" ")), all_commands)) {
+		std::vector<std::string> words;
+		shell::extract_words(command, words);
+		if(words.empty()) continue;
+		if (shell::check_command(words.at(0), all_commands)) {
 			if (command == "exit") {
 				break;
 			} else if (command.substr(0, 5) == "echo ") {
@@ -28,5 +32,3 @@ int main() {
 		}
 	}
 }
-
-
