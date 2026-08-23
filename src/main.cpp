@@ -1,4 +1,4 @@
-#include "./headers/shell.h"
+#include "../include/shell.h"
 
 int main() {
 	std::cout << std::unitbuf;
