@@ -22,7 +22,7 @@ int main() {
 			} else if(words.at(0) == "cwd") {
 				std::cout << "Current Working Directory: " << cwd << std::endl;
 			} else if (words.at(0) == "cd") {
-				directories::update_cwd(words.at(1));
+				directories::update_cwd((words.size() > 1) ? words.at(1) : "./");
 			} else if (words.at(0) == "echo") {
 				std::cout << command.substr(5) << std::endl;
 			} else if (words.at(0) == "type") {
