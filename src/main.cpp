@@ -1,4 +1,5 @@
 #include "../include/shell.h"
+#include "../include/directories.h"
 
 int main() {
 	std::cout << std::unitbuf;
@@ -6,6 +7,7 @@ int main() {
 	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear"};
 	while (true) {
 		std::string cwd = "";
+		directories::get_cwd(cwd);
 		std::string command;
 		std::cout << cwd << " $ ";
 		std::getline(std::cin, command);
