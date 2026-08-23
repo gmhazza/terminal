@@ -7,6 +7,8 @@ A lightweight terminal clone inspired by Windows and Linux shell behaviors, buil
 * `exit` - Quits the shell
 * `echo <text>` - Prints text back to stdout
 * `type <command>` - Checks if a command is a shell builtin
+* `cwd` - Print the current working directory
+* `cd <path>` - Change the path of current working directory
 
 ---
 
