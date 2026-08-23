@@ -1,11 +1,9 @@
-#include <iostream>
-
 #include "./headers/shell.h"
 
 int main() {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
-	std::vector<std::string> all_commands = {"echo", "exit", "type"};
+	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear"};
 	while (true) {
 		std::string cwd = "";
 		std::string command;
@@ -15,8 +13,10 @@ int main() {
 		shell::extract_words(command, words);
 		if(words.empty()) continue;
 		if (shell::check_command(words.at(0), all_commands)) {
-			if (command == "exit") {
+			if (words.at(0) == "exit") {
 				break;
+			} else if(words.at(0) == "clear") {
+				shell::clear_screen();
 			} else if (command.substr(0, 5) == "echo ") {
 				std::cout << command.substr(5) << std::endl;
 			} else if (command.substr(0, 5) == "type ") {

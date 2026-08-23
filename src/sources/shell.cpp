@@ -15,3 +15,7 @@ void shell::extract_words(const std::string& command, std::vector<std::string>& 
         words.emplace_back(word.begin(), word.end());
     }
 }
+
+void shell::clear_screen() {
+    std::cout << "\033[2J\033[1;1H" << std::flush;
+}
