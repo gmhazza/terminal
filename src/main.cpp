@@ -4,7 +4,7 @@
 int main() {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
-	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear"};
+	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd"};
 	while (true) {
 		std::string cwd = "";
 		directories::get_cwd(cwd);
@@ -19,13 +19,17 @@ int main() {
 				break;
 			} else if(words.at(0) == "clear") {
 				shell::clear_screen();
-			} else if (command.substr(0, 5) == "echo ") {
+			} else if(words.at(0) == "cwd") {
+				std::cout << "Current Working Directory: " << cwd << std::endl;
+			} else if (words.at(0) == "cd") {
+				directories::update_cwd(words.at(1));
+			} else if (words.at(0) == "echo") {
 				std::cout << command.substr(5) << std::endl;
-			} else if (command.substr(0, 5) == "type ") {
-				if (shell::check_command(command.substr(5), all_commands)) {
-					std::cout << command.substr(5) << " is a shell builtin" << std::endl;
+			} else if (words.at(0) == "type") {
+				if (shell::check_command(words.at(1), all_commands)) {
+					std::cout << words.at(1) << " is a shell builtin" << std::endl;
 				} else {
-					std::cout << command.substr(5) << ": not found" << std::endl;
+					std::cout << words.at(1) << ": not found" << std::endl;
 				}
 			} 
 		}
