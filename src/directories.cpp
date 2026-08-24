@@ -24,3 +24,11 @@ void directories::list_directory(const std::string& d) {
         }
     }
 }
+void directories::make_directory(const std::string& d) {
+    std::error_code ec;
+    const std::string path = "./" + d;
+    std::filesystem::create_directory(path, ec);
+    if(ec) {
+        std::cout << "could complete the proccess: " << ec.message() << std::endl;
+    }
+}
