@@ -6,10 +6,10 @@ int main() {
 	std::cerr << std::unitbuf;
 	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd", "ls", "mkdir"};
 	while (true) {
-		std::string cwd = "";
-		directories::get_cwd(cwd);
+		std::string folder = "";
+		directories::get_folder(folder);
 		std::string command;
-		std::cout << cwd << " $ ";
+		std::cout << folder << " $ ";
 		std::getline(std::cin, command);
 		std::vector<std::string> words;
 		shell::extract_words(command, words);
@@ -20,6 +20,8 @@ int main() {
 			} else if(words.at(0) == "clear") {
 				shell::clear_screen();
 			} else if(words.at(0) == "cwd") {
+				std::string cwd = "";
+				directories::get_cwd(cwd);
 				std::cout << "Current Working Directory: " << cwd << std::endl;
 			} else if (words.at(0) == "ls") {
 				directories::list_directory((words.size() > 1) ? words.at(1) : "./");

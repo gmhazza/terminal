@@ -1,5 +1,9 @@
 #include "../include/directories.h"
 
+
+void directories::get_folder(std::string& current_folder) {
+    current_folder = std::filesystem::current_path().filename().string();
+}
 void directories::get_cwd(std::string& cwd) {
     cwd = std::filesystem::current_path().string();
 }
