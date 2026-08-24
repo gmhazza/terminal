@@ -4,7 +4,7 @@
 int main() {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
-	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd"};
+	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd", "ls"};
 	while (true) {
 		std::string cwd = "";
 		directories::get_cwd(cwd);
@@ -21,6 +21,8 @@ int main() {
 				shell::clear_screen();
 			} else if(words.at(0) == "cwd") {
 				std::cout << "Current Working Directory: " << cwd << std::endl;
+			} else if (words.at(0) == "ls") {
+				directories::list_directory((words.size() > 1) ? words.at(1) : "./");
 			} else if (words.at(0) == "cd") {
 				directories::update_cwd((words.size() > 1) ? words.at(1) : "./");
 			} else if (words.at(0) == "echo") {
