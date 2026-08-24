@@ -4,7 +4,7 @@ TARGET   := bin/main.exe
 SRCS     := src/*.cpp
 
 all:
-	$(CXX) $(SRCS) -o $(TARGET)
+	$(CXX) -std=c++20 $(SRCS) -o $(TARGET)
 
 run: all
 	./$(TARGET)
