@@ -1,10 +1,11 @@
 CXX      := g++
+CXX_FLAGS := -std=c++20
 
-TARGET   := bin/main.exe
+TARGET   := bin/terminal.exe
 SRCS     := src/*.cpp
 
 all:
-	$(CXX) -std=c++20 $(SRCS) -o $(TARGET)
+	$(CXX) $(CXX_FLAGS) $(SRCS) -o $(TARGET)
 
 run: all
 	./$(TARGET)
