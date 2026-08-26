@@ -1,5 +1,6 @@
 #include "../include/shell.h"
 #include "../include/directories.h"
+#include "../include/env.h"
 
 int main() {
 	std::cout << std::unitbuf;
@@ -41,7 +42,8 @@ int main() {
 			} 
 		}
 		else {
-			std::cout << command.substr(0, command.find(" ")) << ": command not found" << std::endl;
+			env::execute_command(command);
+			//std::cout << command.substr(0, command.find(" ")) << ": command not found" << std::endl;
 		}
 	}
 }
