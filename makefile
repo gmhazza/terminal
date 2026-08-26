@@ -1,7 +1,7 @@
 CXX      := g++
 CXX_FLAGS := -std=c++20
 
-TARGET   := bin/terminal.exe
+TARGET   := bin/termi.exe
 SRCS     := src/*.cpp
 
 all:
