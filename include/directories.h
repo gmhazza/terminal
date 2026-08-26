@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <system_error>
 #include <string>
+#include <fstream>
 
 namespace directories {
     void get_folder(std::string&);
@@ -11,4 +12,5 @@ namespace directories {
     void update_cwd(const std::string&);
     void list_directory(const std::string&);
     void make_directory(const std::string&);
+    void make_file(const std::string&);
 }
