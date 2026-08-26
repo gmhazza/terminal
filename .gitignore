@@ -1,1 +1,2 @@
-bin/terminal.exe
+bin/*.exe
+bin/*.zip
