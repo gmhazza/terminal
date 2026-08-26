@@ -110,7 +110,7 @@ int env::execute_command(std::string& input)
 
     if (pid == 0)
     {
-        execl(exe.c_str(), input.substr(0 , input.find(" ")), input.substr(input.substr(0, input.find(" "))), nullptr);
+        execl(exe.c_str(), input.c_str(), nullptr);
 
         // Only reached if execl() fails
         std::cerr << "Failed to execute " << input.substr(0 , input.find(" ")) << "\n";
