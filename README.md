@@ -12,6 +12,7 @@ A lightweight terminal clone inspired by Windows and Linux shell behaviors, buil
 * `ls <path>` - Show the files and folders of the path or current working directory if no path specified
 * `mkdir <name>` - Create a new directory with a specific name
 * `mkfile <name>` - Create a new file with a specific name
+* `rm [Option] <path>` - Remove a directory or file for a path
 
 ### Supported Cross Platform ENV PATH
 
