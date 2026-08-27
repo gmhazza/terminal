@@ -13,4 +13,5 @@ namespace directories {
     void list_directory(const std::string&);
     void make_directory(const std::string&);
     void make_file(const std::string&);
+    void remove(const std::string&, bool);
 }
