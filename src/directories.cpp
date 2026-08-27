@@ -11,13 +11,13 @@ void directories::update_cwd(const std::string& d) {
     std::error_code ec;
     std::filesystem::current_path(d, ec);
     if (ec) {
-        std::cout << d << ": no directory founded" << std::endl;
+        std::cerr << d << ": no directory founded" << std::endl;
     }
 }
 void directories::list_directory(const std::string& d) {
     std::error_code ec;
     if (!std::filesystem::exists(d, ec) || !std::filesystem::is_directory(d, ec)) {
-        std::cout << "ls: cannot access '" << d << "': No such file or directory" << std::endl;
+        std::cerr << "ls: cannot access '" << d << "': No such file or directory" << std::endl;
         return;
     }
     for (auto& entry : std::filesystem::directory_iterator(d, ec)) {
@@ -33,7 +33,7 @@ void directories::make_directory(const std::string& d) {
     const std::string path = "./" + d;
     std::filesystem::create_directory(path, ec);
     if(ec) {
-        std::cout << "could complete the proccess: " << ec.message() << std::endl;
+        std::cerr << "could complete the proccess: " << ec.message() << std::endl;
     }
 }
 void directories::make_file(const std::string& filename) {
@@ -46,6 +46,20 @@ void directories::make_file(const std::string& filename) {
         file.close();
     }
     else {
-        std::cout << "Unable to make a file on: " << path << std::endl;
+        std::cerr << "Unable to make a file on: " << path << std::endl;
+    }
+}
+void directories::remove(const std::string& d, bool r) {
+    std::error_code ec;
+    if (!std::filesystem::exists(d, ec)) {
+        std::cerr << "rm: No file or directory found" << std::endl;
+    }
+    if (r) {
+        std::filesystem::remove_all(d, ec);
+    } else {
+        std::filesystem::remove(d, ec);
+    }
+    if (ec) {
+        std::cerr << "rm: " << ec.message() << std::endl;
     }
 }

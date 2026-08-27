@@ -8,7 +8,7 @@ const std::string APP_VERSION = "0.0.2";
 int main() {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
-	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd", "ls", "mkdir", "mkfile"};
+	std::vector<std::string> all_commands = {"echo", "exit", "type", "clear", "cwd", "cd", "ls", "mkdir", "mkfile", "rm"};
 	while (true) {
 		std::string folder = "";
 		directories::get_folder(folder);
@@ -39,6 +39,14 @@ int main() {
 			} else if (words.at(0) == "mkfile") {
 				if (words.size() > 1) directories::make_file(words.at(1));
 				else std::cerr << "mkfile: parameters issue\n";
+			} else if (words.at(0) == "rm") {
+				if ( words.size() > 1) {
+					if (words.at(1) == "-r") {
+						directories::remove((words.size() > 2) ? words.at(2) : "  ", true);
+					} else {
+						directories::remove(words.at(1), false);
+					}
+				}
 			} else if (words.at(0) == "type") {
 				if (shell::check_command(words.at(1), all_commands)) {
 					std::cout << words.at(1) << " is a shell builtin" << std::endl;
