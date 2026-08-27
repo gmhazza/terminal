@@ -21,8 +21,8 @@ A lightweight terminal clone inspired by Windows and Linux shell behaviors, buil
 
 1. **first clone the project**
 ```bash
-git clone https://github.com/gmhazza/terminal.git
-cd ./terminal
+git clone https://github.com/gmhazza/termi.git
+cd ./termi
 ```
 
 2. **Build the project**
@@ -37,5 +37,5 @@ make
 
 3. **execute the project**
 ```bash
-./bin/main
+./bin/termi
 ```
