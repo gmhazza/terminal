@@ -3,7 +3,7 @@
 !addplugindir "C:\Program Files (x86)\NSIS\EnVar_plugin\Plugins\x86-unicode"
 
 !define APP_NAME "Termi"
-!define APP_VERSION "0.0.2"
+!define APP_VERSION "0.0.3"
 
 Name "${APP_NAME}"
 OutFile "termi-${APP_VERSION}.exe"
