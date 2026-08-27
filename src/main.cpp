@@ -2,6 +2,9 @@
 #include "../include/directories.h"
 #include "../include/env.h"
 
+const std::string APP_NAME = "termi";
+const std::string APP_VERSION = "0.0.2";
+
 int main() {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
@@ -45,7 +48,23 @@ int main() {
 			}
 		}
 		else {
-			env::execute_command(command);
+			if (words.at(0) == APP_NAME) {
+				if (words.size() > 1) {
+					if ((words.at(1) == "--version") || (words.at(1) == "--version")) {
+						std::cout << APP_NAME << " version: " << APP_VERSION << std::endl;
+					} else {
+						std::cout << "termi: no option found" << std::endl;
+					}
+				} else {
+					std::cout << "termi Usage: " << std::endl;
+					std::cout << "termi [Option]" << std::endl;
+					std::cout << "Options: " << std::endl;
+					std::cout << "--version" << std::endl;
+				}
+			} else {
+				env::execute_command(command);
+			}
+			
 			//std::cout << command.substr(0, command.find(" ")) << ": command not found" << std::endl;
 		}
 	}
