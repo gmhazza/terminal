@@ -29,6 +29,9 @@ Section "Install"
     SetOutPath "$INSTDIR\bin"
     File "..\bin\*.exe"
 
+    SetOutPath "$INSTDIR\configs"
+    File "..\configs\*.ini"
+
     WriteUninstaller "Uninstall.exe"
 
     EnVar::AddValue "PATH" "$INSTDIR\bin"
@@ -47,6 +50,9 @@ Section "Uninstall"
 
     Delete "$INSTDIR\bin\*"
     RMDir "$INSTDIR\bin"
+
+    Delete "$INSTDIR\configs\*"
+    RMDir "$INSTDIR\configs"
 
     RMDir "$INSTDIR"
 SectionEnd
