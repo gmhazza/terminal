@@ -1,7 +1,5 @@
 #include "../include/appearance.h"
 
-
-
 #ifdef _WIN32
 void appearance::enableVirtualTerminal() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -16,6 +14,13 @@ void appearance::enableVirtualTerminal() {}
 #endif
 
 
+
+inline std::string style::rgbtext(int r, int g, int b) {
+    return "\033[38;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+}
+inline std::string style::rgbbg(int r, int g, int b) {
+    return "\033[48;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+}
 configfile::configfile(const std::filesystem::path& p) : filePath(p) { load(); }
 void configfile::load() {
     std::ifstream file(filePath);
@@ -29,11 +34,11 @@ void configfile::load() {
         }
     }
 }
-std::string configfile::get(const std::string& key, const std::string& defaultValue = "") {
+std::string configfile::get(const std::string& key) {
     if (data.find(key) != data.end()) {
         return data[key];
     }
-    return defaultValue;
+    return "";
 }
 void configfile::set(const std::string& key, const std::string& value) {
     data[key] = value;

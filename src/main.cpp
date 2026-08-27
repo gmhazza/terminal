@@ -7,7 +7,7 @@ const std::string APP_NAME = "termi";
 const std::string APP_VERSION = "0.0.3";
 const std::string SETTING_PATH = "../configs/settings.ini";
 
-const std::vector<std::string> THEMES = {"dark", "light"};
+const std::vector<std::string> THEMES = {"dark", "dark-solar", "dracula"};
 const std::vector<std::string> COMMANDS = {"echo", "exit", "type", "clear", "cwd", "cd", "ls", "mkdir", "mkfile", "rm"};
 
 
@@ -21,9 +21,7 @@ int main() {
 		std::cerr << "No Config file founded" << std::endl;
 	}
 	configfile setting(p);
-	setting.set("theme", "dark");
-	setting.save();
-	std::string theme;
+	std::string theme = setting.get("theme");
 	while (true) {
 		std::string folder = "";
 		directories::get_folder(folder);
